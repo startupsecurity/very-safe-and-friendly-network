@@ -1,13 +1,5 @@
 <?php
 session_start();
-?>
-<!DOCTYPE html>
-<html>
-<head>
-    <title>PHP Easy Password</title>
-</head>
-<body>
-<?php
 
 if (!isset($_SESSION['loggedin']) || $_SESSION['loggedin'] !== true) {
     $_SESSION['error'] = "You must log in first to view the dashboard.";
@@ -15,6 +7,12 @@ if (!isset($_SESSION['loggedin']) || $_SESSION['loggedin'] !== true) {
     exit;
 }
 ?>
+<!DOCTYPE html>
+<html>
+<head>
+    <title>PHP Easy Password</title>
+</head>
+<body>
 <h2>Welcome to the Dashboard</h2>
 <form method="post" action="logout.php">
     <button type="submit">Sign Out</button>
