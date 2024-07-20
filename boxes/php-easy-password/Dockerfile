@@ -11,6 +11,8 @@ COPY shared/*.sh /usr/local/bin/
 RUN chmod +x /usr/local/bin/*.sh
 RUN /usr/local/bin/install-tailscale.sh
 
+COPY ./boxes/php-easy-password/php.ini /usr/local/etc/php/
+
 EXPOSE 80
 
 COPY ./boxes/php-easy-password/start.sh /start.sh

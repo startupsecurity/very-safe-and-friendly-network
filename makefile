@@ -29,6 +29,8 @@ launch_php_easy_password:
 	  --cap-add=NET_RAW \
 	  --device=/dev/net/tun \
 	  -e TAILSCALE_AUTHKEY=${TAILSCALE_AUTHKEY} \
+	  -e SERVICE_USERNAME=admin \
+	  -e SERVICE_PASSWORD=password \
 	  -v ./boxes/php-easy-password/tailscale-state:/var/lib/tailscale \
 	  -e HOSTNAME=php-easy-password \
 	  -p 80:80 php-easy-password

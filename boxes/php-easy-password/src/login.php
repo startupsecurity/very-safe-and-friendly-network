@@ -5,8 +5,14 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $username = $_POST['username'];
     $password = $_POST['password'];
 
-    $valid_username = getenv('SERVICE_USERNAME') || 'admin';
-    $valid_password = getenv('SERVICE_PASSWORD') || 'password';
+    $valid_username = getenv('SERVICE_USERNAME') ?? 'admin';
+    $valid_password = getenv('SERVICE_PASSWORD') ?? 'password';
+
+    // Debugging
+    error_log("Environment SERVICE_USERNAME: " . getenv('SERVICE_USERNAME'), 0);
+    error_log("Environment SERVICE_PASSWORD: " . getenv('SERVICE_PASSWORD'), 0);
+    error_log("Valid username: $valid_username", 0);
+    error_log("Valid password: $valid_password", 0);
 
     if ($username === $valid_username && $password === $valid_password) {
         $_SESSION['loggedin'] = true;
@@ -16,6 +22,9 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         http_response_code(401);
         $error = "Invalid username or password.";
     }
+
+    error_log("Login attempt with username: $username", 0);
+    
 }
 ?>
 
